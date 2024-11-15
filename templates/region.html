@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content%}
+<main class="container mt-3 mb-5">
+	<h3 class="border-bottom pb-1 my-4">All Regions</h3>
+	<div class="row">
+		<!-- Category Box -->
+	{% for reg in regs %}
+		<div class="col-md-4">
+			<div class="card mb-3 shadow">
+				<img src="/media/{{reg.image}}" class="card-img-top" alt="{{reg.title}}">
+		    <div class="card-body">
+			    <h5 class="card-title">{{ reg.name}}</h5>
+			    <hr/>
+			    <p class="card-text"><a href="region/{{reg.id}}" class="btn btn-sm btn-primary">All News</a></p>
+			  </div>
+			</div>
+		</div>
+	{% endfor%}
+	</div>
+</main>
+{% endblock%}

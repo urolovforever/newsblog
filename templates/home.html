@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content%}
+<main class="container mt-3 mb-5">
+	<!-- featured news -->
+	<div class="row my-3">
+		<!-- Left -->
+		<div class="col-md-7">
+			<div class="card mb-3">
+			  <img src="/media/{{first_news.image}}" class="card-img-top" alt="{{first_news.title}}">
+			  <div class="card-body">
+			    <h5 class="card-title">{{first_news.title}}</h5>
+			    <hr/>
+			    <p class="card-text"><a href="/detail/{{first_news.id}}" class="btn btn-sm btn-primary">Read Full</a>
+					<a href="/edit-post/{{first_news.id}}" class="btn btn-sm btn-primary">Edit</a>
+					<a href="/delete-post/{{first_news.id}}" class="btn btn-sm btn-primary">Delete</a>
+				</p>
+
+			  </div>
+			</div>
+		</div>
+		<!-- Right -->
+		<div class="col-md-5" style="max-height: 450px; overflow: auto;">
+		{% for news in three_news %}
+			<!-- News Box -->
+			<div class="card">
+			  <div class="row no-gutters">
+			    <div class="col-md-4">
+			       <img src="/media/{{news.image}}" class="card-img-top" alt="{{news.title}}">
+			    </div>
+			    <div class="col-md-8">
+			      <div class="card-body">
+			        <h5 class="card-title">{{news.title}}</h5>
+			        <p class="card-text"><a href="{% url 'detail' news.pk %}" class="btn btn-sm btn-primary">Read Full</a>
+						<a href="/edit-post/{{first_news.id}}" class="btn btn-sm btn-primary">Edit</a>
+						<a href="/delete-post/{{first_news.id}}" class="btn btn-sm btn-primary">Delete</a>
+					</p>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<hr/>
+			{% endfor%}
+		</div>
+	</div>
+
+	<!-- End Single Category -->
+</main>
+{% endblock%}
